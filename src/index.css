@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* ── Custom Design Tokens ── */
+@theme {
+  --color-accent: #c5705d;
+  --color-accent-light: #d4897a;
+  --color-accent-dark: #a85a49;
+  --color-surface: #fafaf9;
+  --color-surface-warm: #f5f0eb;
+  --color-ink: #1a1a1a;
+  --color-ink-light: #6b6b6b;
+  --color-ink-muted: #999999;
+  --color-hero-bg: #0a0a0a;
+  --color-hero-text: #f5f0eb;
+  --color-card-bg: #ffffff;
+  --color-card-border: #e8e4df;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+}
+
+/* ── Reset & Base ── */
+* {
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-hero-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* ── Custom Cursor ── */
+.custom-cursor {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-hero-text);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  opacity: 0.5;
+  mix-blend-mode: normal;
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ── Grain Overlay ── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Scroll offset for nav ── */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ── Oversized Display Type ── */
+.display-massive {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 14rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.display-large {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.display-medium {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+/* ── Text Reveal Animation Helpers ── */
+.char-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.char-reveal span {
+  display: inline-block;
+  transform: translateY(120%) rotateX(-40deg);
+  opacity: 0;
+}
+
+.line-reveal {
+  overflow: hidden;
+}
+
+.line-reveal > div {
+  transform: translateY(100%);
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-ink-muted) 20%,
+    var(--color-ink-muted) 80%,
+    transparent 100%
+  );
+  opacity: 0.15;
+}
+
+/* ── Accordion Service Items ── */
+.service-item {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  overflow: hidden;
+}
+
+.service-item:first-child {
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-item.active .service-content {
+  max-height: 500px;
+}
+
+/* ── Writing Items ── */
+.writing-item {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.writing-item:first-child {
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.writing-item .writing-title {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.3s ease;
+}
+
+.writing-item:hover .writing-title {
+  transform: translateX(2rem);
+  color: var(--color-accent);
+}
+
+.writing-item .writing-accent {
+  width: 0;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.writing-item:hover .writing-accent {
+  width: 4px;
+}
+
+/* ── Hero Background Video ── */
+@media (max-width: 768px) {
+  .hero-bg-video {
+    display: none !important;
+  }
+}
+
+/* ── Scroll Indicator ── */
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+.scroll-indicator {
+  width: 1px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-hero-text);
+  animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+/* ── Mobile Menu Overlay ── */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--color-hero-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu-overlay a {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  color: var(--color-hero-text);
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu-overlay a:hover {
+  color: var(--color-accent);
+}
+
+/* ── Nav Clock ── */
+.nav-clock {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
