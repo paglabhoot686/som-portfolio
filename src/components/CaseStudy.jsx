@@ -88,36 +88,12 @@ export default function CaseStudy() {
         <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
           {/* Screenshot */}
           <div className="md:col-span-7 lg:col-span-8">
-            <div ref={screenshotRef} className="bg-[#F9FAFB] rounded-2xl overflow-hidden border border-gray-200 aspect-[16/10] relative shadow-sm">
-              <div className="absolute inset-0 p-4 md:p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-                  </div>
-                  <div className="flex-1 h-5 bg-gray-200 rounded mx-8" />
-                </div>
-                <div className="grid grid-cols-4 gap-3 h-[calc(100%-2.5rem)]">
-                  {['📥 Capture', '🔄 Processing', '💡 Developing', '📦 Archive'].map((col, i) => (
-                    <div key={col} className="bg-white rounded-xl p-3 border border-gray-100">
-                      <p className="text-gray-400 text-[10px] font-medium mb-3 tracking-wide">{col}</p>
-                      {Array.from({ length: Math.max(1, 3 - i) }, (_, j) => (
-                        <div key={j} className="bg-[#F9FAFB] rounded-lg p-2.5 mb-2 border border-gray-100">
-                          <div className="h-1.5 bg-gray-200 rounded w-3/4 mb-2" />
-                          <div className="h-1.5 bg-gray-100 rounded w-1/2" />
-                          {j === 0 && (
-                            <div className="mt-2 flex gap-1">
-                              <div className="h-1 w-6 rounded-full bg-gray-300" />
-                              <div className="h-1 w-4 rounded-full bg-gray-200" />
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div ref={screenshotRef} className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+              <img 
+                src="/mc-dashboard.png" 
+                alt="Mission Control Dashboard — showing markets, calendar, tasks, email, and news widgets" 
+                className="w-full h-auto block"
+              />
             </div>
           </div>
 
