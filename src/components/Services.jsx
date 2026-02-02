@@ -67,7 +67,7 @@ export default function Services() {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const itemsRef = useRef([])
-  const [activeIndex, setActiveIndex] = useState(0) // First one open by default
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,12 +94,12 @@ export default function Services() {
   }
 
   return (
-    <section id="services" ref={sectionRef} className="py-32 md:py-44 bg-surface-warm relative">
+    <section id="services" ref={sectionRef} className="py-32 md:py-44 bg-[#F9FAFB] relative">
       <div className="w-full px-6 md:px-10">
         <div ref={titleRef} className="mb-16 md:mb-24">
-          <p className="text-accent text-xs tracking-[0.35em] uppercase font-medium mb-4">What I Do</p>
-          <h2 className="display-medium text-ink">How I can help.</h2>
-          <p className="text-ink-light text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+          <p className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-4">What I Do</p>
+          <h2 className="display-medium text-gray-900">How I can help.</h2>
+          <p className="text-gray-500 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
             I work at the intersection of product thinking, design craft, and AI capability. 
             Whether you need strategic leadership or hands-on building — I do both.
           </p>
@@ -118,24 +118,24 @@ export default function Services() {
                 className="w-full flex items-center gap-6 md:gap-10 py-8 md:py-10 text-left group"
                 data-cursor-hover
               >
-                <span className="text-ink-muted/40 text-sm font-mono shrink-0 w-8">{service.number}</span>
-                <h3 className="font-display text-2xl md:text-4xl lg:text-5xl text-ink group-hover:text-accent transition-colors duration-300 flex-1">
+                <span className="text-gray-400 text-sm font-mono shrink-0 w-8">{service.number}</span>
+                <h3 className="font-bold text-2xl md:text-4xl lg:text-5xl text-gray-900 group-hover:text-gray-500 transition-colors duration-300 flex-1 tracking-tight">
                   {service.title}
                 </h3>
-                <span className={`text-ink-muted text-2xl shrink-0 transition-transform duration-500 ${activeIndex === i ? 'rotate-45' : ''}`}>+</span>
+                <span className={`text-gray-400 text-2xl shrink-0 transition-transform duration-500 ${activeIndex === i ? 'rotate-45' : ''}`}>+</span>
               </button>
 
               <div className="service-content">
                 <div className="pb-8 md:pb-10 pl-14 md:pl-[4.5rem] pr-8">
-                  <p className="text-ink-light text-base md:text-lg leading-relaxed max-w-2xl mb-6">
+                  <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mb-6">
                     {service.description}
                   </p>
                   
                   {/* Detail list */}
                   <div className="grid md:grid-cols-2 gap-x-8 gap-y-2 mb-6 max-w-2xl">
                     {service.details.map((detail) => (
-                      <div key={detail} className="flex items-center gap-2 text-sm text-ink-light">
-                        <span className="text-accent text-[8px]">●</span>
+                      <div key={detail} className="flex items-center gap-2 text-sm text-gray-500">
+                        <span className="text-gray-900 text-[8px]">●</span>
                         {detail}
                       </div>
                     ))}
@@ -143,7 +143,7 @@ export default function Services() {
 
                   <div className="flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
-                      <span key={tag} className="text-xs px-4 py-1.5 rounded-full border border-ink/10 text-ink-muted">
+                      <span key={tag} className="text-xs px-4 py-1.5 rounded-full border border-gray-200 text-gray-500">
                         {tag}
                       </span>
                     ))}

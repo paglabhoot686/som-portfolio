@@ -75,27 +75,27 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="py-32 md:py-44 bg-surface relative">
+    <section id="about" ref={sectionRef} className="py-32 md:py-44 bg-white relative">
       <div className="w-full px-6 md:px-10">
         {/* Section label */}
         <div ref={titleRef} className="mb-16 md:mb-24">
-          <p className="text-accent text-xs tracking-[0.35em] uppercase font-medium mb-4">About</p>
-          <h2 className="display-medium text-ink">The arc.</h2>
+          <p className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-4">About</p>
+          <h2 className="display-medium text-gray-900">The arc.</h2>
         </div>
 
         {/* Main bio text — asymmetric */}
         <div className="md:ml-[15%] lg:ml-[20%] max-w-4xl space-y-8">
           <p ref={(el) => (linesRef.current[0] = el)}
-            className="font-display text-2xl md:text-3xl lg:text-[2.2rem] text-ink leading-[1.4] tracking-tight">
+            className="font-bold text-2xl md:text-3xl lg:text-[2.2rem] text-gray-900 leading-[1.4] tracking-tight">
             I've spent 18 years building and shaping digital products — first as a{' '}
-            <span className="text-accent">UX designer</span> obsessing over every
-            interaction, then as a <span className="text-accent">product leader</span>{' '}
+            <span className="underline decoration-gray-300 underline-offset-4">UX designer</span> obsessing over every
+            interaction, then as a <span className="underline decoration-gray-300 underline-offset-4">product leader</span>{' '}
             driving strategy at the director level, and now as an{' '}
-            <span className="text-accent">AI builder</span> crafting the next wave of intelligent tools.
+            <span className="underline decoration-gray-300 underline-offset-4">AI builder</span> crafting the next wave of intelligent tools.
           </p>
 
           <p ref={(el) => (linesRef.current[1] = el)}
-            className="text-ink-light text-lg md:text-xl leading-relaxed">
+            className="text-gray-500 text-lg md:text-xl leading-relaxed">
             This unusual career arc — from pixels to product-market fit to
             machine learning pipelines — gives me a rare perspective. I don't just
             understand what to build; I understand <em>how</em> it should feel,{' '}
@@ -103,7 +103,7 @@ export default function About() {
           </p>
 
           <p ref={(el) => (linesRef.current[2] = el)}
-            className="text-ink-light text-lg md:text-xl leading-relaxed">
+            className="text-gray-500 text-lg md:text-xl leading-relaxed">
             I hold an MS in Human-Computer Interaction from Carnegie Mellon
             University. Currently on a deliberate career break in Bangalore,
             building AI-powered infrastructure and exploring what's next.
@@ -112,30 +112,30 @@ export default function About() {
 
         {/* Metrics row */}
         <div ref={metricsRef}
-          className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 md:ml-[15%] lg:ml-[20%] max-w-4xl">
+          className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 md:ml-[15%] lg:ml-[20%] max-w-4xl">
           {metrics.map((m) => (
-            <div key={m.label} className="metric-item">
-              <p className="font-display text-5xl md:text-6xl lg:text-7xl text-ink tracking-tight leading-none">{m.value}</p>
-              {m.unit && <p className="text-ink-muted text-xs tracking-[0.2em] uppercase mt-2">{m.unit}</p>}
-              <p className="text-ink-light text-sm mt-1">{m.label}</p>
+            <div key={m.label} className="metric-item bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+              <p className="font-extrabold text-5xl md:text-6xl lg:text-7xl text-gray-900 tracking-tight leading-none">{m.value}</p>
+              {m.unit && <p className="text-gray-400 text-xs tracking-[0.2em] uppercase mt-2">{m.unit}</p>}
+              <p className="text-gray-500 text-sm mt-1">{m.label}</p>
             </div>
           ))}
         </div>
 
         {/* Career Timeline */}
         <div ref={timelineRef} className="mt-24 md:mt-32 md:ml-[15%] lg:ml-[20%] max-w-4xl">
-          <h3 className="text-ink text-xs tracking-[0.35em] uppercase font-medium mb-10">Career Journey</h3>
+          <h3 className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-10">Career Journey</h3>
           <div className="space-y-0">
             {timeline.map((item) => (
-              <div key={item.year} className="timeline-item grid md:grid-cols-12 gap-4 py-6 border-b border-ink/5 first:border-t first:border-ink/5">
+              <div key={item.year} className="timeline-item grid md:grid-cols-12 gap-4 py-6 border-b border-gray-200 first:border-t first:border-gray-200">
                 <div className="md:col-span-3">
-                  <p className="text-accent text-sm font-mono tracking-wide">{item.year}</p>
+                  <p className="text-gray-900 text-sm font-mono tracking-wide font-semibold">{item.year}</p>
                 </div>
                 <div className="md:col-span-3">
-                  <p className="text-ink font-medium text-sm">{item.role}</p>
+                  <p className="text-gray-900 font-medium text-sm">{item.role}</p>
                 </div>
                 <div className="md:col-span-6">
-                  <p className="text-ink-light text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -144,10 +144,10 @@ export default function About() {
 
         {/* Skills */}
         <div ref={skillsRef} className="mt-20 md:mt-28 md:ml-[15%] lg:ml-[20%] max-w-4xl">
-          <h3 className="text-ink text-xs tracking-[0.35em] uppercase font-medium mb-8">Skills & Tools</h3>
+          <h3 className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-8">Skills & Tools</h3>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
-              <span key={skill} className="skill-tag text-xs px-4 py-2 rounded-full border border-ink/10 text-ink-light hover:border-accent hover:text-accent transition-colors duration-300">
+              <span key={skill} className="skill-tag text-xs px-4 py-2 rounded-full border border-gray-200 text-gray-500 hover:border-gray-900 hover:text-gray-900 transition-colors duration-300">
                 {skill}
               </span>
             ))}

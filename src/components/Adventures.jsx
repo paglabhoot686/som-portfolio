@@ -190,31 +190,30 @@ function Tooltip({ location, position, onClose }) {
       }}
     >
       <div
-        className="relative bg-[#141414] border border-[rgba(197,112,93,0.2)] rounded-xl p-4 min-w-[220px] max-w-[280px] shadow-2xl"
-        style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.6), 0 0 20px rgba(197,112,93,0.08)' }}
+        className="relative bg-white border border-gray-200 rounded-2xl p-4 min-w-[220px] max-w-[280px] shadow-lg"
       >
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-[#f5f0eb]/30 hover:text-[#f5f0eb]/60 transition-colors text-xs leading-none"
+          className="absolute top-2 right-3 text-gray-400 hover:text-gray-900 transition-colors text-xs leading-none"
           style={{ cursor: 'pointer' }}
           data-cursor-hover
         >
           ✕
         </button>
-        <p className="text-accent text-[9px] tracking-[0.2em] uppercase mb-1">
+        <p className="text-gray-900 text-[9px] tracking-[0.2em] uppercase font-semibold mb-1">
           {typeLabel[location.type] || location.type}
         </p>
-        <h4 className="font-display text-lg text-[#f5f0eb] mb-1.5 leading-tight">
+        <h4 className="font-bold text-lg text-gray-900 mb-1.5 leading-tight tracking-tight">
           {location.name}
-          {location.subtitle && <span className="text-[#f5f0eb]/40 text-sm ml-1">· {location.subtitle}</span>}
+          {location.subtitle && <span className="text-gray-400 text-sm font-normal ml-1">· {location.subtitle}</span>}
         </h4>
-        <p className="text-[#f5f0eb]/50 text-xs leading-relaxed mb-3">{location.desc}</p>
+        <p className="text-gray-500 text-xs leading-relaxed mb-3">{location.desc}</p>
         {location.url && (
           <a
             href={location.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-accent text-[10px] tracking-[0.15em] uppercase font-medium hover:text-accent-light transition-colors"
+            className="inline-flex items-center gap-1.5 text-gray-900 text-[10px] tracking-[0.15em] uppercase font-semibold hover:text-gray-600 transition-colors"
             data-cursor-hover
           >
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
@@ -225,7 +224,7 @@ function Tooltip({ location, position, onClose }) {
         )}
         {/* Arrow */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-3 h-3 rotate-45 bg-[#141414] border-r border-b border-[rgba(197,112,93,0.2)]"
+          className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-3 h-3 rotate-45 bg-white border-r border-b border-gray-200"
         />
       </div>
     </div>
@@ -367,17 +366,12 @@ export default function Adventures() {
     .join(' ')
 
   return (
-    <section id="adventures" ref={sectionRef} className="py-32 md:py-44 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 80% 60% at 60% 40%, rgba(197,112,93,0.04) 0%, transparent 70%)',
-      }} />
-
+    <section id="adventures" ref={sectionRef} className="py-32 md:py-44 relative overflow-hidden bg-hero-bg">
       <div className="w-full px-6 md:px-10 relative z-10">
         <div ref={titleRef} className="mb-16 md:mb-20">
-          <p className="text-accent text-xs tracking-[0.35em] uppercase font-medium mb-4">Beyond Work</p>
-          <h2 className="display-medium text-[#f5f0eb]">Life off-screen.</h2>
-          <p className="text-[#f5f0eb]/40 text-base md:text-lg mt-4 max-w-xl leading-relaxed">
+          <p className="text-white text-xs tracking-[0.35em] uppercase font-semibold mb-4">Beyond Work</p>
+          <h2 className="display-medium text-hero-text">Life off-screen.</h2>
+          <p className="text-hero-text/40 text-base md:text-lg mt-4 max-w-xl leading-relaxed">
             When I'm not building products, I'm on a motorcycle heading somewhere remote,
             climbing something tall, or tinkering with hardware in the workshop.
           </p>
@@ -386,9 +380,9 @@ export default function Adventures() {
         {/* ── The Constellation Map ── */}
         <div ref={mapRef} className="relative max-w-6xl mx-auto mb-20 md:mb-28">
           {/* Map legend */}
-          <div className="flex flex-wrap gap-6 mb-6 text-[10px] tracking-[0.2em] uppercase text-[#f5f0eb]/25">
+          <div className="flex flex-wrap gap-6 mb-6 text-[10px] tracking-[0.2em] uppercase text-hero-text/25">
             <span className="flex items-center gap-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: '#c5705d', boxShadow: '0 0 6px rgba(197,112,93,0.4)' }} />
+              <span className="inline-block w-2.5 h-2.5 rounded-full bg-white" />
               Home Base
             </span>
             <span className="flex items-center gap-2">
@@ -400,7 +394,7 @@ export default function Adventures() {
               Mountaineering
             </span>
             <span className="flex items-center gap-2">
-              <span className="inline-block w-6 border-t border-dashed" style={{ borderColor: 'rgba(197,112,93,0.25)' }} />
+              <span className="inline-block w-6 border-t border-dashed border-white/25" />
               Dream Route
             </span>
           </div>
@@ -431,7 +425,7 @@ export default function Adventures() {
                 </filter>
                 {/* Grid pattern */}
                 <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                  <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(245,240,235,0.02)" strokeWidth="0.5" />
+                  <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
                 </pattern>
               </defs>
 
@@ -445,7 +439,7 @@ export default function Adventures() {
                   className="continent-path"
                   d={d}
                   fill="none"
-                  stroke="rgba(245,240,235,0.06)"
+                  stroke="rgba(255,255,255,0.08)"
                   strokeWidth="0.8"
                   strokeDasharray="2000"
                   opacity="0"
@@ -460,7 +454,7 @@ export default function Adventures() {
                   y1={MAP_H * (pct / 100)}
                   x2={MAP_W}
                   y2={MAP_H * (pct / 100)}
-                  stroke="rgba(245,240,235,0.02)"
+                  stroke="rgba(255,255,255,0.03)"
                   strokeWidth="0.5"
                   strokeDasharray="4 8"
                 />
@@ -471,7 +465,7 @@ export default function Adventures() {
                 className="dream-route"
                 d={dreamPathD}
                 fill="none"
-                stroke="rgba(197,112,93,0.15)"
+                stroke="rgba(255,255,255,0.12)"
                 strokeWidth="1"
                 strokeDasharray="6 4"
               />
@@ -479,7 +473,7 @@ export default function Adventures() {
                 className="dream-label"
                 x={lngToX(-100)}
                 y={latToY(28)}
-                fill="rgba(197,112,93,0.2)"
+                fill="rgba(255,255,255,0.15)"
                 fontSize="7"
                 fontFamily="Inter, system-ui, sans-serif"
                 letterSpacing="0.15em"
@@ -501,7 +495,7 @@ export default function Adventures() {
                     className="route-line"
                     d={`M${homeX.toFixed(1)},${homeY.toFixed(1)} Q${midX.toFixed(1)},${midY.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`}
                     fill="none"
-                    stroke="rgba(197,112,93,0.18)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="0.8"
                     strokeDasharray="3 3"
                   />
@@ -526,18 +520,18 @@ export default function Adventures() {
                       cy={cy}
                       r="10"
                       fill="transparent"
-                      stroke="rgba(197,112,93,0)"
+                      stroke="rgba(255,255,255,0)"
                       strokeWidth="0.5"
                       className="marker-ring"
                     >
-                      <animate attributeName="stroke" values="rgba(197,112,93,0);rgba(197,112,93,0.3);rgba(197,112,93,0)" dur="3s" repeatCount="indefinite" />
+                      <animate attributeName="stroke" values="rgba(255,255,255,0);rgba(255,255,255,0.3);rgba(255,255,255,0)" dur="3s" repeatCount="indefinite" />
                     </circle>
                     {/* Dot */}
                     <circle
                       cx={cx}
                       cy={cy}
                       r="3.5"
-                      fill={loc.type === 'motorcycle' ? '#c5705d' : loc.type === 'mountaineering' ? '#d4897a' : '#a0917e'}
+                      fill="#9CA3AF"
                       opacity="0.9"
                       filter="url(#glow)"
                     />
@@ -556,7 +550,7 @@ export default function Adventures() {
                       x={cx}
                       y={cy + 14}
                       textAnchor="middle"
-                      fill="rgba(245,240,235,0.35)"
+                      fill="rgba(255,255,255,0.35)"
                       fontSize="6"
                       fontFamily="Inter, system-ui, sans-serif"
                       letterSpacing="0.08em"
@@ -571,11 +565,11 @@ export default function Adventures() {
               {/* Home base marker — special pulsing */}
               <g className="marker-home" style={{ transformOrigin: `${homeX}px ${homeY}px` }}>
                 {/* Pulse rings */}
-                <circle cx={homeX} cy={homeY} r="4" fill="none" stroke="#c5705d" strokeWidth="0.5" opacity="0">
+                <circle cx={homeX} cy={homeY} r="4" fill="none" stroke="#ffffff" strokeWidth="0.5" opacity="0">
                   <animate attributeName="r" values="4;16;4" dur="3s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" />
                 </circle>
-                <circle cx={homeX} cy={homeY} r="4" fill="none" stroke="#c5705d" strokeWidth="0.3" opacity="0">
+                <circle cx={homeX} cy={homeY} r="4" fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0">
                   <animate attributeName="r" values="4;22;4" dur="3s" repeatCount="indefinite" begin="0.5s" />
                   <animate attributeName="opacity" values="0.2;0;0.2" dur="3s" repeatCount="indefinite" begin="0.5s" />
                 </circle>
@@ -584,14 +578,14 @@ export default function Adventures() {
                   cx={homeX}
                   cy={homeY}
                   r="5"
-                  fill="#c5705d"
+                  fill="#ffffff"
                   filter="url(#glow-strong)"
                 />
                 <circle
                   cx={homeX}
                   cy={homeY}
                   r="2"
-                  fill="#f5f0eb"
+                  fill="#111827"
                   opacity="0.8"
                 />
                 {/* Label */}
@@ -599,7 +593,7 @@ export default function Adventures() {
                   x={homeX}
                   y={homeY + 16}
                   textAnchor="middle"
-                  fill="rgba(197,112,93,0.6)"
+                  fill="rgba(255,255,255,0.6)"
                   fontSize="7"
                   fontFamily="Inter, system-ui, sans-serif"
                   fontWeight="500"
@@ -624,21 +618,21 @@ export default function Adventures() {
           </div>
 
           {/* Map caption */}
-          <p className="text-[#f5f0eb]/15 text-[10px] tracking-[0.2em] uppercase mt-4 text-right">
+          <p className="text-hero-text/15 text-[10px] tracking-[0.2em] uppercase mt-4 text-right">
             Click markers to explore · Routes from Bangalore
           </p>
         </div>
 
         {/* ── Hobbies & Interests ── */}
         <div ref={hobbiesRef} className="max-w-4xl mx-auto">
-          <h3 className="text-[#f5f0eb]/40 text-xs tracking-[0.35em] uppercase font-medium mb-8">Hobbies & Interests</h3>
+          <h3 className="text-hero-text/40 text-xs tracking-[0.35em] uppercase font-semibold mb-8">Hobbies & Interests</h3>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-0">
             {hobbies.map((hobby) => (
-              <div key={hobby.label} className="hobby-item flex items-baseline gap-4 py-4 border-b border-[#f5f0eb]/5">
-                <span className="text-accent text-[8px]">●</span>
+              <div key={hobby.label} className="hobby-item flex items-baseline gap-4 py-4 border-b border-white/10">
+                <span className="text-white text-[8px]">●</span>
                 <div>
-                  <p className="text-[#f5f0eb]/70 font-medium text-sm">{hobby.label}</p>
-                  <p className="text-[#f5f0eb]/25 text-xs mt-0.5">{hobby.detail}</p>
+                  <p className="text-hero-text/70 font-medium text-sm">{hobby.label}</p>
+                  <p className="text-hero-text/25 text-xs mt-0.5">{hobby.detail}</p>
                 </div>
               </div>
             ))}

@@ -68,41 +68,16 @@ export default function Hero() {
     ))
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-hero-bg flex flex-col justify-center overflow-hidden">
-      {/* Kinetic typography background video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="hero-bg-video"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: 0.35,
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      >
-        <source src="/hero-animation.webm" type="video/webm" />
-      </video>
-
-      <div className="absolute inset-0 opacity-30" style={{
-        background: 'radial-gradient(ellipse 60% 50% at 70% 40%, rgba(197,112,93,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(197,112,93,0.05) 0%, transparent 70%)',
-      }} />
-
-      <div className="relative w-full px-6 md:px-10">
+    <section ref={containerRef} className="relative min-h-screen bg-[#F9FAFB] flex flex-col justify-center overflow-hidden">
+      <div className="relative w-full px-6 md:px-10 pt-20">
         {/* Main typography */}
         <div className="overflow-hidden">
-          <h1 ref={line1Ref} className="display-massive text-hero-text" style={{ perspective: '600px' }}>
+          <h1 ref={line1Ref} className="display-massive text-gray-900" style={{ perspective: '600px' }}>
             {splitChars('SOM')}
           </h1>
         </div>
         <div className="overflow-hidden mt-[-0.02em]">
-          <h1 ref={line2Ref} className="display-massive text-hero-text" style={{ perspective: '600px' }}>
+          <h1 ref={line2Ref} className="display-massive text-gray-900" style={{ perspective: '600px' }}>
             {splitChars('CHAKRAVARTY')}
           </h1>
         </div>
@@ -111,17 +86,17 @@ export default function Hero() {
         <div ref={contentRef} className="mt-10 md:mt-14 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
           {/* Left: Bio */}
           <div className="md:col-span-5 space-y-5 order-2 md:order-1">
-            <p className="text-accent text-xs md:text-sm tracking-[0.35em] uppercase font-medium">
+            <p className="text-gray-900 text-xs md:text-sm tracking-[0.35em] uppercase font-semibold">
               Product × UX × AI
             </p>
-            <p className="text-hero-text/60 text-base md:text-lg leading-relaxed">
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
               Director-level Product Leader with 18 years across UX design, product management, and AI. 
               Carnegie Mellon HCI. Currently building what's next from Bangalore.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 bg-accent text-white text-sm font-medium rounded-full hover:bg-accent-dark transition-colors tracking-wide"
+                className="inline-flex items-center px-6 py-3 bg-black text-white text-sm font-semibold rounded-full hover:bg-gray-800 transition-colors tracking-wide"
                 data-cursor-hover
               >
                 Get in Touch
@@ -130,7 +105,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/somchakravarty/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-hero-text/20 text-hero-text/60 text-sm font-medium rounded-full hover:border-accent hover:text-accent transition-colors tracking-wide"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 text-gray-500 text-sm font-medium rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors tracking-wide"
                 data-cursor-hover
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -149,11 +124,7 @@ export default function Hero() {
             {/* Headshot */}
             <div ref={headshotRef} className="relative">
               <div
-                className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full overflow-hidden"
-                style={{
-                  border: '1px solid rgba(197, 112, 93, 0.2)',
-                  boxShadow: '0 0 40px rgba(197, 112, 93, 0.08)',
-                }}
+                className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full overflow-hidden border border-gray-200 shadow-lg"
               >
                 <img
                   src="/headshot.png"
@@ -162,36 +133,28 @@ export default function Hero() {
                   loading="eager"
                 />
               </div>
-              {/* Subtle glow ring */}
-              <div
-                className="absolute inset-0 rounded-full pointer-events-none"
-                style={{
-                  border: '1px solid rgba(197, 112, 93, 0.06)',
-                  transform: 'scale(1.15)',
-                }}
-              />
             </div>
 
             {/* Stats grid */}
             <div className="grid grid-cols-3 gap-6 w-full">
-              <div>
-                <p className="font-display text-4xl md:text-5xl text-hero-text tracking-tight leading-none">18</p>
-                <p className="text-hero-text/30 text-xs tracking-[0.15em] uppercase mt-2">Years Exp.</p>
+              <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+                <p className="font-extrabold text-4xl md:text-5xl text-gray-900 tracking-tight leading-none">18</p>
+                <p className="text-gray-400 text-xs tracking-[0.15em] uppercase mt-2">Years Exp.</p>
               </div>
-              <div>
-                <p className="font-display text-4xl md:text-5xl text-hero-text tracking-tight leading-none">9+9</p>
-                <p className="text-hero-text/30 text-xs tracking-[0.15em] uppercase mt-2">UX + Product</p>
+              <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+                <p className="font-extrabold text-4xl md:text-5xl text-gray-900 tracking-tight leading-none">9+9</p>
+                <p className="text-gray-400 text-xs tracking-[0.15em] uppercase mt-2">UX + Product</p>
               </div>
-              <div>
-                <p className="font-display text-4xl md:text-5xl text-accent tracking-tight leading-none">AI</p>
-                <p className="text-hero-text/30 text-xs tracking-[0.15em] uppercase mt-2">Building Now</p>
+              <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+                <p className="font-extrabold text-4xl md:text-5xl text-gray-900 tracking-tight leading-none">AI</p>
+                <p className="text-gray-400 text-xs tracking-[0.15em] uppercase mt-2">Building Now</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Credential badges */}
-        <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2 text-hero-text/20 text-[10px] tracking-[0.25em] uppercase">
+        <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2 text-gray-400 text-[10px] tracking-[0.25em] uppercase">
           <span>Carnegie Mellon HCI '14</span>
           <span>·</span>
           <span>Ex-Director of Product</span>
@@ -204,7 +167,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-        <span className="text-hero-text/20 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-gray-400 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
         <div className="scroll-indicator" />
       </div>
     </section>

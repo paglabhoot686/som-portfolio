@@ -114,7 +114,7 @@ export default function Writing() {
       <div className="w-full px-6 md:px-10">
         <div ref={titleRef} className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16">
           <div>
-            <p className="text-accent text-xs tracking-[0.35em] uppercase font-medium mb-4">Writing</p>
+            <p className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-4">Writing</p>
             <h2 className="display-medium text-ink">Thinking out loud.</h2>
             <p className="text-ink-light text-base md:text-lg mt-4 max-w-xl leading-relaxed">
               I write about product craft, UX philosophy, identity, and life. Conversational but substantive — 
@@ -125,7 +125,7 @@ export default function Writing() {
             href="https://www.linkedin.com/in/somchakravarty/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 text-xs text-ink-muted hover:text-accent transition-colors duration-300 tracking-[0.15em] uppercase mt-4 md:mt-0"
+            className="hidden md:inline-flex items-center gap-2 text-xs text-gray-500 hover:text-gray-900 transition-colors duration-300 tracking-[0.15em] uppercase mt-4 md:mt-0"
             data-cursor-hover
           >
             All on LinkedIn
@@ -138,9 +138,9 @@ export default function Writing() {
         {/* Content themes */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-5xl mx-auto">
           {themes.map((theme) => (
-            <div key={theme.label} className="p-4 border border-ink/5 rounded-lg">
-              <p className="text-accent text-xs tracking-[0.2em] uppercase font-medium mb-1">{theme.label}</p>
-              <p className="text-ink-muted text-xs leading-relaxed">{theme.desc}</p>
+            <div key={theme.label} className="p-4 bg-white border border-gray-200 rounded-2xl shadow-sm">
+              <p className="text-gray-900 text-xs tracking-[0.2em] uppercase font-semibold mb-1">{theme.label}</p>
+              <p className="text-gray-500 text-xs leading-relaxed">{theme.desc}</p>
             </div>
           ))}
         </div>
@@ -160,13 +160,13 @@ export default function Writing() {
                 data-cursor-hover
               >
                 <div className="flex items-start gap-4">
-                  <div className="writing-accent bg-accent rounded-full shrink-0 h-full min-h-[2rem] self-stretch" />
+                  <div className="writing-accent bg-gray-900 rounded-full shrink-0 h-full min-h-[2rem] self-stretch" />
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
-                      <h3 className="writing-title font-display text-2xl md:text-3xl lg:text-4xl text-ink leading-snug">
+                      <h3 className="writing-title font-bold text-2xl md:text-3xl lg:text-4xl text-ink leading-snug tracking-tight">
                         {article.title}
                       </h3>
-                      <span className="text-ink-muted text-xs tracking-[0.15em] uppercase shrink-0">{article.date}</span>
+                      <span className="text-gray-400 text-xs tracking-[0.15em] uppercase shrink-0">{article.date}</span>
                     </div>
                     <p className="text-ink-light text-sm md:text-base leading-relaxed mt-3 max-w-2xl">
                       {article.excerpt}
@@ -192,16 +192,16 @@ export default function Writing() {
                 data-cursor-hover
               >
                 <div className="flex items-start gap-4">
-                  <div className="writing-accent bg-accent rounded-full shrink-0 h-full min-h-[1.5rem] self-stretch" />
+                  <div className="writing-accent bg-gray-900 rounded-full shrink-0 h-full min-h-[1.5rem] self-stretch" />
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-8">
-                      <h4 className="writing-title font-display text-lg md:text-xl text-ink leading-snug">
+                      <h4 className="writing-title font-bold text-lg md:text-xl text-ink leading-snug tracking-tight">
                         {article.title}
                       </h4>
-                      <span className="text-ink-muted text-[10px] tracking-[0.15em] uppercase shrink-0">{article.date}</span>
+                      <span className="text-gray-400 text-[10px] tracking-[0.15em] uppercase shrink-0">{article.date}</span>
                     </div>
                     {article.excerpt && (
-                      <p className="text-ink-muted text-sm leading-relaxed mt-1.5 max-w-xl">{article.excerpt}</p>
+                      <p className="text-gray-500 text-sm leading-relaxed mt-1.5 max-w-xl">{article.excerpt}</p>
                     )}
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default function Writing() {
 
         <div className="mt-10 md:hidden text-center">
           <a href="https://www.linkedin.com/in/somchakravarty/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-accent">
+            className="inline-flex items-center gap-1 text-sm text-gray-900 font-medium">
             All articles on LinkedIn →
           </a>
         </div>

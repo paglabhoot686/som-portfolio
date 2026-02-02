@@ -1,22 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-/* ── Custom Design Tokens ── */
+/* ── Mission Control Design Tokens ── */
 @theme {
-  --color-accent: #c5705d;
-  --color-accent-light: #d4897a;
-  --color-accent-dark: #a85a49;
-  --color-surface: #fafaf9;
-  --color-surface-warm: #f5f0eb;
-  --color-ink: #1a1a1a;
-  --color-ink-light: #6b6b6b;
-  --color-ink-muted: #999999;
-  --color-hero-bg: #0a0a0a;
-  --color-hero-text: #f5f0eb;
+  --color-accent: #111827;
+  --color-accent-light: #374151;
+  --color-accent-dark: #000000;
+  --color-surface: #F9FAFB;
+  --color-surface-warm: #FFFFFF;
+  --color-ink: #111827;
+  --color-ink-light: #6B7280;
+  --color-ink-muted: #9CA3AF;
   --color-card-bg: #ffffff;
-  --color-card-border: #e8e4df;
+  --color-card-border: #E5E7EB;
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 /* ── Reset & Base ── */
@@ -52,14 +51,14 @@ html.lenis, html.lenis body {
 }
 
 body {
-  background-color: var(--color-hero-bg);
-  color: var(--color-ink);
+  background-color: #F9FAFB;
+  color: #111827;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: var(--color-accent);
+  background-color: #111827;
   color: white;
 }
 
@@ -67,7 +66,7 @@ body {
 .custom-cursor {
   width: 16px;
   height: 16px;
-  border: 1.5px solid var(--color-hero-text);
+  border: 1.5px solid #111827;
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -85,8 +84,8 @@ body {
 .custom-cursor.hovering {
   width: 48px;
   height: 48px;
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  background-color: #111827;
+  border-color: #111827;
   opacity: 0.5;
   mix-blend-mode: normal;
 }
@@ -103,7 +102,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.035;
+  opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -114,29 +113,29 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
-/* ── Oversized Display Type ── */
+/* ── Oversized Display Type (Inter bold) ── */
 .display-massive {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 12vw, 14rem);
   line-height: 0.88;
-  letter-spacing: -0.03em;
-  font-weight: 400;
+  letter-spacing: -0.04em;
+  font-weight: 800;
 }
 
 .display-large {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 9rem);
   line-height: 0.92;
-  letter-spacing: -0.02em;
-  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 
 .display-medium {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 5rem);
   line-height: 1;
-  letter-spacing: -0.02em;
-  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 
 /* ── Text Reveal Animation Helpers ── */
@@ -162,24 +161,17 @@ section[id] {
 /* ── Section Divider ── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-ink-muted) 20%,
-    var(--color-ink-muted) 80%,
-    transparent 100%
-  );
-  opacity: 0.15;
+  background: #E5E7EB;
 }
 
 /* ── Accordion Service Items ── */
 .service-item {
-  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  border-bottom: 1px solid #E5E7EB;
   overflow: hidden;
 }
 
 .service-item:first-child {
-  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  border-top: 1px solid #E5E7EB;
 }
 
 .service-content {
@@ -194,11 +186,11 @@ section[id] {
 
 /* ── Writing Items ── */
 .writing-item {
-  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .writing-item:first-child {
-  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  border-top: 1px solid #E5E7EB;
 }
 
 .writing-item .writing-title {
@@ -208,7 +200,7 @@ section[id] {
 
 .writing-item:hover .writing-title {
   transform: translateX(2rem);
-  color: var(--color-accent);
+  color: #111827;
 }
 
 .writing-item .writing-accent {
@@ -218,13 +210,6 @@ section[id] {
 
 .writing-item:hover .writing-accent {
   width: 4px;
-}
-
-/* ── Hero Background Video ── */
-@media (max-width: 768px) {
-  .hero-bg-video {
-    display: none !important;
-  }
 }
 
 /* ── Scroll Indicator ── */
@@ -253,7 +238,7 @@ section[id] {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-hero-text);
+  background: #9CA3AF;
   animation: scroll-down 1.5s ease-in-out infinite;
 }
 
@@ -262,7 +247,7 @@ section[id] {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: var(--color-hero-bg);
+  background: #F9FAFB;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -280,18 +265,72 @@ section[id] {
 
 .mobile-menu-overlay a {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: clamp(2.5rem, 10vw, 5rem);
-  color: var(--color-hero-text);
+  color: #111827;
   line-height: 1.2;
   transition: color 0.3s ease;
 }
 
 .mobile-menu-overlay a:hover {
-  color: var(--color-accent);
+  color: #6B7280;
 }
 
 /* ── Nav Clock ── */
 .nav-clock {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
+}
+
+/* ── Floating Pill Nav ── */
+.pill-nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.pill-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.pill-nav-btn:hover {
+  background: #F3F4F6;
+  color: #111827;
+}
+
+.pill-nav-btn.active {
+  background: #111827;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .pill-nav {
+    gap: 0.125rem;
+    padding: 0.25rem;
+  }
+  .pill-nav-btn {
+    width: 34px;
+    height: 34px;
+  }
 }

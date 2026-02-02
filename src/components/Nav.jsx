@@ -1,42 +1,57 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { Home, User, Briefcase, FolderOpen, PenTool, Mountain, Mail } from 'lucide-react'
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Work' },
-  { href: '#writing', label: 'Writing' },
-  { href: '#adventures', label: 'Adventures' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#', label: 'Home', icon: Home },
+  { href: '#about', label: 'About', icon: User },
+  { href: '#services', label: 'Services', icon: Briefcase },
+  { href: '#work', label: 'Work', icon: FolderOpen },
+  { href: '#writing', label: 'Writing', icon: PenTool },
+  { href: '#adventures', label: 'Adventures', icon: Mountain },
+  { href: '#contact', label: 'Contact', icon: Mail },
 ]
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('#')
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [time, setTime] = useState('')
 
+  // Track active section via IntersectionObserver
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const sectionIds = ['about', 'services', 'work', 'writing', 'adventures', 'contact']
+    const observers = []
 
-  // Real-time clock
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date()
-      setTime(
-        now.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false,
-          timeZone: 'Asia/Kolkata',
-        })
-      )
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(`#${entry.target.id}`)
+        }
+      })
     }
-    updateTime()
-    const interval = setInterval(updateTime, 1000)
-    return () => clearInterval(interval)
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) {
+        const observer = new IntersectionObserver(handleIntersect, {
+          rootMargin: '-30% 0px -60% 0px',
+          threshold: 0,
+        })
+        observer.observe(el)
+        observers.push(observer)
+      }
+    })
+
+    // Detect when at the very top (home)
+    const onScroll = () => {
+      if (window.scrollY < 200) {
+        setActiveSection('#')
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      observers.forEach((o) => o.disconnect())
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   // Lock body scroll when mobile menu open
@@ -45,81 +60,94 @@ export default function Nav() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  const handleClick = useCallback((href) => {
+    setMobileOpen(false)
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [])
+
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-hero-bg/80 backdrop-blur-xl'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="flex items-center justify-between px-6 md:px-10 py-5">
-          {/* Logo */}
-          <a
-            href="#"
-            className="font-display text-2xl text-hero-text hover:text-accent transition-colors duration-300 z-50"
-          >
-            Som.
-          </a>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-10">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[11px] text-hero-text/50 hover:text-hero-text transition-colors duration-300 tracking-[0.25em] uppercase"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Clock + Mobile toggle */}
-          <div className="flex items-center gap-6">
-            <span className="nav-clock text-[11px] text-hero-text/30 tracking-[0.15em] hidden md:block">
-              BLR {time}
-            </span>
-
-            {/* Mobile toggle */}
-            <button
-              className="md:hidden text-hero-text z-50 p-2 relative w-8 h-8 flex flex-col justify-center items-center"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
-              <span
-                className={`block h-[1px] w-6 bg-hero-text transition-all duration-300 ${
-                  mobileOpen ? 'rotate-45 translate-y-[0.5px]' : '-translate-y-1'
-                }`}
-              />
-              <span
-                className={`block h-[1px] w-6 bg-hero-text transition-all duration-300 ${
-                  mobileOpen ? '-rotate-45 -translate-y-[0.5px]' : 'translate-y-1'
-                }`}
-              />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay ${mobileOpen ? 'open' : ''}`}>
-        <div className="flex flex-col gap-2 px-4">
-          {links.map((link, i) => (
+      {/* Desktop floating pill nav */}
+      <nav className="pill-nav hidden sm:flex" role="navigation" aria-label="Main navigation">
+        {links.map((link) => {
+          const Icon = link.icon
+          const isActive = activeSection === link.href
+          return (
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
-              style={{ transitionDelay: mobileOpen ? `${i * 60}ms` : '0ms' }}
-              className="opacity-100"
+              onClick={() => handleClick(link.href)}
+              className={`pill-nav-btn ${isActive ? 'active' : ''}`}
+              aria-label={link.label}
+              title={link.label}
+              data-cursor-hover
+            >
+              <Icon size={18} strokeWidth={2} />
+            </a>
+          )
+        })}
+      </nav>
+
+      {/* Mobile: hamburger toggle + pill nav overlay */}
+      <div className="sm:hidden fixed top-4 right-4 z-50">
+        <button
+          className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-lg flex flex-col justify-center items-center gap-1"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          data-cursor-hover
+        >
+          <span
+            className={`block h-[1.5px] w-4 bg-gray-900 transition-all duration-300 ${
+              mobileOpen ? 'rotate-45 translate-y-[3px]' : ''
+            }`}
+          />
+          <span
+            className={`block h-[1.5px] w-4 bg-gray-900 transition-all duration-300 ${
+              mobileOpen ? '-rotate-45 -translate-y-[3px]' : ''
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${mobileOpen ? 'open' : ''}`}>
+        {/* Pill nav centered on mobile overlay */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10 w-full">
+          {links.map((link) => {
+            const Icon = link.icon
+            const isActive = activeSection === link.href
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => handleClick(link.href)}
+                className={`w-14 h-14 rounded-full flex flex-col items-center justify-center gap-1 border transition-colors duration-200 ${
+                  isActive
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-100'
+                }`}
+                aria-label={link.label}
+                data-cursor-hover
+              >
+                <Icon size={20} strokeWidth={2} />
+              </a>
+            )
+          })}
+        </div>
+        {/* Labels below icons */}
+        <div className="flex flex-col items-center gap-2 w-full">
+          {links.map((link) => (
+            <a
+              key={`label-${link.href}`}
+              href={link.href}
+              onClick={() => handleClick(link.href)}
+              className="text-gray-900 text-lg font-semibold tracking-tight hover:text-gray-500 transition-colors"
             >
               {link.label}
             </a>
           ))}
-        </div>
-        <div className="absolute bottom-10 left-6 text-hero-text/30 text-xs tracking-[0.2em]">
-          BLR {time}
         </div>
       </div>
     </>
