@@ -86,14 +86,34 @@ export default function CaseStudy() {
 
         {/* Main layout */}
         <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-          {/* Screenshot */}
+          {/* Screenshot Collage */}
           <div className="md:col-span-7 lg:col-span-8">
-            <div ref={screenshotRef} className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-              <img 
-                src="/mc-dashboard.png" 
-                alt="Mission Control Dashboard — showing markets, calendar, tasks, email, and news widgets" 
-                className="w-full h-auto block"
-              />
+            <div ref={screenshotRef} className="space-y-4">
+              {/* Top: Kanban (full width, larger) */}
+              <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                <img 
+                  src="/mc-kanban.png" 
+                  alt="Mission Control Tasks — Kanban board with Capture, Processing, Developing, and Archive columns" 
+                  className="w-full h-auto block"
+                />
+              </div>
+              {/* Bottom row: Documents + Overview */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                  <img 
+                    src="/mc-documents.png" 
+                    alt="Mission Control Documents — document list with tags, search, and favorites" 
+                    className="w-full h-auto block"
+                  />
+                </div>
+                <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                  <img 
+                    src="/mc-overview.png" 
+                    alt="Mission Control Overview — dashboard with markets, calendar, tasks, email, and news widgets" 
+                    className="w-full h-auto block"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 

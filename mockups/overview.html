@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1000,height=800">
+<title>MC Overview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  body { margin: 0; background: #f3f4f6; width: 1000px; height: 800px; overflow: hidden; }
+</style>
+</head>
+<body class="flex">
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white border-r border-gray-200 flex flex-col h-full flex-shrink-0">
+    <div class="px-5 py-5 flex items-center gap-3">
+      <div class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
+        <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <span class="font-bold text-gray-900 text-sm">Mission Control</span>
+    </div>
+    <nav class="flex-1 px-3 mt-2">
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-900 bg-gray-100 mb-1">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
+        Overview
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-500 hover:bg-gray-50 mb-1">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+        Documents
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-500 hover:bg-gray-50 mb-1">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125z"/></svg>
+        Tasks
+      </a>
+    </nav>
+    <div class="px-5 py-4 border-t border-gray-100">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-xs font-bold">S</div>
+        <div>
+          <p class="text-xs font-semibold text-gray-900">Som</p>
+          <p class="text-[10px] text-gray-400">somnath686@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 p-6 lg:p-8 overflow-hidden max-w-4xl">
+    <!-- Greeting -->
+    <div class="bg-white border border-gray-200 rounded-2xl px-6 py-5 mb-6 flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-bold text-gray-900">🌟 Good morning, Som</h1>
+        <p class="text-gray-500 text-sm mt-1">You have 3 tasks in progress and 2 events today</p>
+      </div>
+      <div class="bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 max-w-xs hidden lg:block">
+        <p class="text-xs italic text-gray-500 leading-relaxed">"Downshift to discover. Speed gives you distance, but slowing down gives you depth."</p>
+        <p class="text-[10px] text-gray-400 mt-1">— Somnath Chakravarty</p>
+      </div>
+    </div>
+
+    <!-- Widget grid -->
+    <div class="grid grid-cols-3 gap-4 mb-4">
+      <!-- Markets -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+            <h3 class="text-sm font-semibold text-gray-900">Markets</h3>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Live</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-700">Nifty 50</span>
+            <span class="text-sm font-medium text-green-600">24,857 +1.2%</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-700">Sensex</span>
+            <span class="text-sm font-medium text-green-600">81,523 +0.9%</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-700">Bank Nifty</span>
+            <span class="text-sm font-medium text-red-500">52,140 -0.3%</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-700">USD/INR</span>
+            <span class="text-sm font-medium text-green-600">83.42 +0.1%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+            <h3 class="text-sm font-semibold text-gray-900">Calendar</h3>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Today</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <span class="text-xs text-gray-400 w-10 flex-shrink-0">10:00</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">Fractional PM call — Acme</p>
+              <p class="text-xs text-gray-400">Google Meet</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="text-xs text-gray-400 w-10 flex-shrink-0">14:30</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">UX Audit review</p>
+              <p class="text-xs text-gray-400">Portfolio client</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="text-xs text-gray-400 w-10 flex-shrink-0">18:00</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">Badminton</p>
+              <p class="text-xs text-gray-400">HSR Layout court</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks Summary -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 class="text-sm font-semibold text-gray-900">Tasks</h3>
+        </div>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="bg-gray-50 rounded-xl py-4">
+            <p class="text-2xl font-bold text-gray-900">3</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-wider mt-1">In Progress</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl py-4">
+            <p class="text-2xl font-bold text-gray-900">2</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-wider mt-1">Review</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl py-4">
+            <p class="text-2xl font-bold text-gray-900">12</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-wider mt-1">Done</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="grid grid-cols-2 gap-4">
+      <!-- Email -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <h3 class="text-sm font-semibold text-gray-900">Email</h3>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">3 unread</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-gray-900">Geetika Gagneja</p>
+                <span class="text-[10px] text-gray-400">2h ago</span>
+              </div>
+              <p class="text-xs text-gray-500">Re: Thought Leadership Framework review</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-gray-900">GitHub</p>
+                <span class="text-[10px] text-gray-400">4h ago</span>
+              </div>
+              <p class="text-xs text-gray-500">[mission-control] PR #4 merged</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-gray-900">Vercel</p>
+                <span class="text-[10px] text-gray-400">5h ago</span>
+              </div>
+              <p class="text-xs text-gray-500">Deployment succeeded — mission-control</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.625a2.25 2.25 0 01-2.25-2.25V8.625c0-.621.504-1.125 1.125-1.125H6.75"/></svg>
+          <h3 class="text-sm font-semibold text-gray-900">News</h3>
+        </div>
+        <div class="space-y-3">
+          <div>
+            <p class="text-sm font-medium text-gray-900">AI chip demand drives semiconductor stocks higher</p>
+            <p class="text-[10px] text-gray-400">Bloomberg · 4h ago</p>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-900">India GDP growth exceeds forecasts at 7.8%</p>
+            <p class="text-[10px] text-gray-400">Economic Times · 5h ago</p>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-900">Tech layoffs slow as hiring picks up in AI sector</p>
+            <p class="text-[10px] text-gray-400">TechCrunch · 8h ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
