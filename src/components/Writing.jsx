@@ -11,6 +11,7 @@ const articles = [
     excerpt: 'On the power of slowing down to find what matters. Why a deliberate career break might be the most productive thing you ever do. Motorcycles as a lens for life.',
     url: 'https://www.linkedin.com/pulse/downshift-discover-epiphany-wheels-som-chakravarty-zaouc',
     category: 'Life',
+    image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=200&fit=crop',
   },
   {
     title: 'The Art of Crafting the Right Friction',
@@ -18,6 +19,7 @@ const articles = [
     excerpt: 'Not all friction is bad. How intentional resistance in product design leads to better outcomes and deeper engagement. Analysis of Shapr3D, Excalidraw, and more.',
     url: 'https://www.linkedin.com/pulse/art-crafting-right-friction-turning-free-users-paying-som-chakravarty-0qtbc',
     category: 'Product',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=400&h=200&fit=crop',
   },
   {
     title: 'How Our Identities Shape Our Lives',
@@ -25,6 +27,7 @@ const articles = [
     excerpt: 'Exploring the invisible narratives we carry — the identity-action-habit loop. How our self-stories define the products we build, teams we lead, and decisions we make.',
     url: 'https://www.linkedin.com/pulse/how-our-identities-shape-lives-som-chakravarty-q7smc',
     category: 'Philosophy',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop',
   },
   {
     title: 'We Need to Change How We Look at Work and People',
@@ -32,6 +35,7 @@ const articles = [
     excerpt: 'A critique of the "70 hours/week" mindset. Camp A vs Camp B workers. Why outcomes matter more than hours — always.',
     url: 'https://www.linkedin.com/pulse/we-need-change-how-look-work-people-som-chakravarty-giqac',
     category: 'Work',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=200&fit=crop',
   },
   {
     title: 'Metrics that Matter',
@@ -39,6 +43,7 @@ const articles = [
     excerpt: 'How to move beyond vanity metrics and focus on what actually drives product success. A framework for meaningful measurement.',
     url: 'https://www.linkedin.com/pulse/metrics-matter-how-move-beyond-vanity-product-som-chakravarty-39zrc',
     category: 'Product',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop',
   },
   {
     title: 'The Technical Art of UX Design',
@@ -46,6 +51,7 @@ const articles = [
     excerpt: 'A product manager\'s journey through the technical foundations of UX. Why understanding implementation makes you a better designer.',
     url: 'https://www.linkedin.com/pulse/technical-art-ux-design-product-managers-journey-som-chakravarty-72l8c',
     category: 'UX',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop',
   },
   {
     title: 'User Story Mapping',
@@ -53,6 +59,7 @@ const articles = [
     excerpt: 'A practical guide to user story mapping — turning user needs into actionable product roadmaps. From discovery to delivery.',
     url: 'https://www.linkedin.com/pulse/user-story-mapping-som-chakravarty',
     category: 'Product',
+    image: 'https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=400&h=200&fit=crop',
   },
   {
     title: 'The Art of Process Consulting',
@@ -60,6 +67,7 @@ const articles = [
     excerpt: 'Why your digital transformation might be turning into a disaster. The hidden art of process consulting and organizational change.',
     url: 'https://www.linkedin.com/pulse/art-process-consulting-why-your-digital-might-turning-som-chakravarty-tflwc',
     category: 'Strategy',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
   },
 ]
 
@@ -132,32 +140,43 @@ export default function Writing() {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1"
+              className="group block bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1"
               data-cursor-hover
             >
-              {/* Category tag */}
-              <span className={`inline-block text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 rounded-full border mb-4 ${categoryColors[article.category]}`}>
-                {article.category}
-              </span>
-              
-              {/* Title */}
-              <h3 className="font-bold text-lg text-gray-900 leading-snug tracking-tight group-hover:text-gray-700 transition-colors mb-3">
-                {article.title}
-              </h3>
-              
-              {/* Excerpt */}
-              <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
-                {article.excerpt}
-              </p>
-              
-              {/* Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <span className="text-gray-400 text-xs tracking-wide">{article.date}</span>
-                <span className="text-gray-400 group-hover:text-gray-900 transition-colors">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
+              {/* Image preview */}
+              <div className="relative h-36 overflow-hidden">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                {/* Category tag overlaid on image */}
+                <span className={`absolute top-3 left-3 text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 rounded-full border backdrop-blur-sm bg-white/90 ${categoryColors[article.category]}`}>
+                  {article.category}
                 </span>
+              </div>
+              
+              <div className="p-5">
+                {/* Title */}
+                <h3 className="font-bold text-lg text-gray-900 leading-snug tracking-tight group-hover:text-gray-700 transition-colors mb-2">
+                  {article.title}
+                </h3>
+                
+                {/* Excerpt */}
+                <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-4">
+                  {article.excerpt}
+                </p>
+                
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <span className="text-gray-400 text-xs tracking-wide">{article.date}</span>
+                  <span className="text-gray-400 group-hover:text-gray-900 transition-colors">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </a>
           ))}
