@@ -73,10 +73,14 @@ export default function Hero() {
       <div className="relative w-full px-6 md:px-10 pt-24 md:pt-20">
         
         {/* Hero main row: Photo left + Name right */}
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-10">
-          {/* Square headshot */}
-          <div ref={headshotRef} className="flex-shrink-0">
-            <div className="w-[180px] h-[180px] md:w-[240px] md:h-[240px] lg:w-[280px] lg:h-[280px] rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+        <div className="flex items-stretch gap-[clamp(0.75rem,2vw,2rem)]">
+          {/* Square headshot — height matches 2 lines of hero name text */}
+          {/* font-size: clamp(3rem,9vw,10rem), line-height: 0.88, 2 lines ≈ font-size × 1.76 */}
+          <div ref={headshotRef} className="flex-shrink-0 self-start" style={{
+            width: 'clamp(5.3rem, 15.84vw, 17.6rem)',
+            height: 'clamp(5.3rem, 15.84vw, 17.6rem)',
+          }}>
+            <div className="w-full h-full rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
               <img
                 src="/headshot.png"
                 alt="Som Chakravarty"
@@ -86,15 +90,15 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Name */}
+          {/* Name — sized so CHAKRAVARTY fits on one line */}
           <div ref={nameRef} className="flex-1 min-w-0">
             <div className="overflow-hidden">
-              <h1 className="display-massive text-gray-900 leading-[0.85]" style={{ perspective: '600px' }}>
+              <h1 className="hero-name text-gray-900" style={{ perspective: '600px' }}>
                 {splitChars('SOM')}
               </h1>
             </div>
             <div className="overflow-hidden mt-[-0.02em]">
-              <h1 className="display-massive text-gray-900 leading-[0.85]" style={{ perspective: '600px' }}>
+              <h1 className="hero-name text-gray-900" style={{ perspective: '600px' }}>
                 {splitChars('CHAKRAVARTY')}
               </h1>
             </div>

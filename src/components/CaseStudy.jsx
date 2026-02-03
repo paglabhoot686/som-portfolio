@@ -76,7 +76,7 @@ export default function CaseStudy() {
         <p className="text-gray-900 text-xs tracking-[0.35em] uppercase font-semibold mb-6">Featured Work</p>
 
         <h2 ref={titleRef} className="display-large text-gray-900 mb-8 md:mb-12">
-          MISSION<br />CONTROL
+          Mission<br />Control
         </h2>
         
         <p className="text-gray-500 text-sm md:text-base max-w-xl mb-16 md:mb-24 leading-relaxed">
