@@ -9,85 +9,73 @@ const articles = [
     title: 'Downshift to Discover',
     date: 'Jul 2025',
     excerpt: 'On the power of slowing down to find what matters. Why a deliberate career break might be the most productive thing you ever do. Motorcycles as a lens for life.',
-    featured: true,
-    url: 'https://www.linkedin.com/pulse/downshift-discover-som-chakravarty/',
+    url: 'https://www.linkedin.com/pulse/downshift-discover-epiphany-wheels-som-chakravarty-zaouc',
+    category: 'Life',
   },
   {
     title: 'The Art of Crafting the Right Friction',
     date: 'Dec 2024',
     excerpt: 'Not all friction is bad. How intentional resistance in product design leads to better outcomes and deeper engagement. Analysis of Shapr3D, Excalidraw, and more.',
-    featured: true,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    url: 'https://www.linkedin.com/pulse/art-crafting-right-friction-turning-free-users-paying-som-chakravarty-0qtbc',
+    category: 'Product',
   },
   {
     title: 'How Our Identities Shape Our Lives',
     date: 'Nov 2024',
     excerpt: 'Exploring the invisible narratives we carry — the identity-action-habit loop. How our self-stories define the products we build, teams we lead, and decisions we make.',
-    featured: true,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    url: 'https://www.linkedin.com/pulse/how-our-identities-shape-lives-som-chakravarty-q7smc',
+    category: 'Philosophy',
   },
   {
     title: 'We Need to Change How We Look at Work and People',
     date: 'Nov 2023',
-    excerpt: 'A critique of the "70 hours/week" mindset. Camp A vs Camp B workers. Outcomes over hours — always.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    excerpt: 'A critique of the "70 hours/week" mindset. Camp A vs Camp B workers. Why outcomes matter more than hours — always.',
+    url: 'https://www.linkedin.com/pulse/we-need-change-how-look-work-people-som-chakravarty-giqac',
+    category: 'Work',
   },
   {
-    title: 'The Quiet Power of Saying No',
-    date: 'Sep 2023',
-    excerpt: 'Why the best product decisions are often the features you choose not to build.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    title: 'Metrics that Matter',
+    date: '2024',
+    excerpt: 'How to move beyond vanity metrics and focus on what actually drives product success. A framework for meaningful measurement.',
+    url: 'https://www.linkedin.com/pulse/metrics-matter-how-move-beyond-vanity-product-som-chakravarty-39zrc',
+    category: 'Product',
   },
   {
-    title: 'Design Systems Are Team Systems',
-    date: 'Jun 2023',
-    excerpt: 'A design system reflects your org structure. Fix the team dynamics first.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    title: 'The Technical Art of UX Design',
+    date: '2024',
+    excerpt: 'A product manager\'s journey through the technical foundations of UX. Why understanding implementation makes you a better designer.',
+    url: 'https://www.linkedin.com/pulse/technical-art-ux-design-product-managers-journey-som-chakravarty-72l8c',
+    category: 'UX',
   },
   {
-    title: 'From Wireframes to Roadmaps',
-    date: 'Mar 2023',
-    excerpt: 'Lessons from crossing the bridge between design and product management.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    title: 'User Story Mapping',
+    date: '2024',
+    excerpt: 'A practical guide to user story mapping — turning user needs into actionable product roadmaps. From discovery to delivery.',
+    url: 'https://www.linkedin.com/pulse/user-story-mapping-som-chakravarty',
+    category: 'Product',
   },
   {
-    title: 'The Second-Order Effects of AI in Product',
-    date: 'Jan 2023',
-    excerpt: 'AI won\'t just change features — it will reshape how product teams operate.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
-  },
-  {
-    title: 'Building for the Unscripted Moment',
-    date: 'Oct 2022',
-    excerpt: 'Why the best UX anticipates what users haven\'t asked for yet.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
-  },
-  {
-    title: 'Carnegie Mellon Changed How I Think',
-    date: 'Jul 2022',
-    excerpt: 'Reflections on how an HCI education reshapes your problem-solving lens permanently.',
-    featured: false,
-    url: 'https://www.linkedin.com/in/somchakravarty/',
+    title: 'The Art of Process Consulting',
+    date: '2024',
+    excerpt: 'Why your digital transformation might be turning into a disaster. The hidden art of process consulting and organizational change.',
+    url: 'https://www.linkedin.com/pulse/art-process-consulting-why-your-digital-might-turning-som-chakravarty-tflwc',
+    category: 'Strategy',
   },
 ]
 
-const themes = [
-  { label: 'Product Craft', desc: 'Metrics, SaaS strategies, friction design, user story mapping' },
-  { label: 'UX Roots', desc: 'Technical UX, prototyping, accessibility, design systems' },
-  { label: 'Philosophy of Work', desc: 'Identity, meaning, outcomes vs hours' },
-  { label: 'Life Metaphors', desc: 'Motorcycles as epiphany, speed vs exploration' },
-]
+const categoryColors = {
+  Life: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
+  Product: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
+  Philosophy: 'bg-purple-500/10 text-purple-600 border-purple-500/20',
+  Work: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
+  UX: 'bg-pink-500/10 text-pink-600 border-pink-500/20',
+  Strategy: 'bg-slate-500/10 text-slate-600 border-slate-500/20',
+}
 
 export default function Writing() {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
-  const itemsRef = useRef([])
+  const cardsRef = useRef([])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -96,12 +84,12 @@ export default function Writing() {
         scrollTrigger: { trigger: titleRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
       })
 
-      itemsRef.current.forEach((item, i) => {
-        if (!item) return
-        gsap.from(item, {
-          y: 30, opacity: 0, duration: 0.6, ease: 'power3.out',
-          scrollTrigger: { trigger: item, start: 'top 92%', toggleActions: 'play none none reverse' },
-          delay: i * 0.05,
+      cardsRef.current.forEach((card, i) => {
+        if (!card) return
+        gsap.from(card, {
+          y: 40, opacity: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 92%', toggleActions: 'play none none reverse' },
+          delay: i * 0.08,
         })
       })
     }, sectionRef)
@@ -135,81 +123,47 @@ export default function Writing() {
           </a>
         </div>
 
-        {/* Content themes */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-5xl mx-auto">
-          {themes.map((theme) => (
-            <div key={theme.label} className="p-4 bg-white border border-gray-200 rounded-2xl shadow-sm">
-              <p className="text-gray-900 text-xs tracking-[0.2em] uppercase font-semibold mb-1">{theme.label}</p>
-              <p className="text-gray-500 text-xs leading-relaxed">{theme.desc}</p>
-            </div>
+        {/* Article Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+          {articles.map((article, i) => (
+            <a
+              key={article.title}
+              ref={(el) => (cardsRef.current[i] = el)}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1"
+              data-cursor-hover
+            >
+              {/* Category tag */}
+              <span className={`inline-block text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 rounded-full border mb-4 ${categoryColors[article.category]}`}>
+                {article.category}
+              </span>
+              
+              {/* Title */}
+              <h3 className="font-bold text-lg text-gray-900 leading-snug tracking-tight group-hover:text-gray-700 transition-colors mb-3">
+                {article.title}
+              </h3>
+              
+              {/* Excerpt */}
+              <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
+                {article.excerpt}
+              </p>
+              
+              {/* Footer */}
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <span className="text-gray-400 text-xs tracking-wide">{article.date}</span>
+                <span className="text-gray-400 group-hover:text-gray-900 transition-colors">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </span>
+              </div>
+            </a>
           ))}
         </div>
 
-        {/* Featured articles — large treatment with excerpts always visible */}
-        <div className="max-w-5xl mx-auto mb-4">
-          {articles
-            .filter((a) => a.featured)
-            .map((article, i) => (
-              <a
-                key={article.title}
-                ref={(el) => (itemsRef.current[i] = el)}
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="writing-item block py-8 md:py-10 group"
-                data-cursor-hover
-              >
-                <div className="flex items-start gap-4">
-                  <div className="writing-accent bg-gray-900 rounded-full shrink-0 h-full min-h-[2rem] self-stretch" />
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
-                      <h3 className="writing-title font-bold text-2xl md:text-3xl lg:text-4xl text-ink leading-snug tracking-tight">
-                        {article.title}
-                      </h3>
-                      <span className="text-gray-400 text-xs tracking-[0.15em] uppercase shrink-0">{article.date}</span>
-                    </div>
-                    <p className="text-ink-light text-sm md:text-base leading-relaxed mt-3 max-w-2xl">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </div>
-              </a>
-            ))}
-        </div>
-
-        {/* All other articles — with excerpts */}
-        <div className="max-w-5xl mx-auto">
-          {articles
-            .filter((a) => !a.featured)
-            .map((article, i) => (
-              <a
-                key={article.title}
-                ref={(el) => (itemsRef.current[i + 3] = el)}
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="writing-item block py-5 md:py-6 group"
-                data-cursor-hover
-              >
-                <div className="flex items-start gap-4">
-                  <div className="writing-accent bg-gray-900 rounded-full shrink-0 h-full min-h-[1.5rem] self-stretch" />
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-8">
-                      <h4 className="writing-title font-bold text-lg md:text-xl text-ink leading-snug tracking-tight">
-                        {article.title}
-                      </h4>
-                      <span className="text-gray-400 text-[10px] tracking-[0.15em] uppercase shrink-0">{article.date}</span>
-                    </div>
-                    {article.excerpt && (
-                      <p className="text-gray-500 text-sm leading-relaxed mt-1.5 max-w-xl">{article.excerpt}</p>
-                    )}
-                  </div>
-                </div>
-              </a>
-            ))}
-        </div>
-
-        <div className="mt-10 md:hidden text-center">
+        <div className="mt-12 md:hidden text-center">
           <a href="https://www.linkedin.com/in/somchakravarty/" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-sm text-gray-900 font-medium">
             All articles on LinkedIn →

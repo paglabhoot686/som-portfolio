@@ -12,10 +12,10 @@ const metrics = [
 ]
 
 const timeline = [
-  { year: '2007–2016', role: 'UX Designer → Lead', desc: 'Enterprise design systems, interaction design, information architecture. Built and led design teams across complex B2B products.' },
-  { year: '2013–2014', role: 'Carnegie Mellon University', desc: 'MS in Human-Computer Interaction. Pittsburgh, PA.' },
-  { year: '2016–2025', role: 'Product Manager → Director', desc: 'Strategic/Agile Portfolio Management, Work Management. Roadmaps, GTM, retention/growth, new market entry. Led AI-based product initiatives.' },
   { year: '2025–Now', role: 'Building with AI', desc: 'Career break. Building AI-powered infrastructure, exploring what\'s next. Shipping products at the intersection of Product + UX + AI.' },
+  { year: '2016–2025', role: 'Product Manager → Director', desc: 'Strategic/Agile Portfolio Management, Work Management. Roadmaps, GTM, retention/growth, new market entry. Led AI-based product initiatives.' },
+  { year: '2013–2014', role: 'Carnegie Mellon University', desc: 'MS in Human-Computer Interaction. Pittsburgh, PA.' },
+  { year: '2007–2016', role: 'UX Designer → Lead', desc: 'Enterprise design systems, interaction design, information architecture. Built and led design teams across complex B2B products.' },
 ]
 
 const skills = [
